@@ -1,0 +1,2048 @@
+<rdf:RDF 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#" 
+	xmlns:uml="http://langdale.com.au/2005/UML#" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+	xmlns:cim="http://iec.ch/TC57/CIM100#"
+	xml:base="http://iec.ch/TC57/CimBusNameMarkerHelperSchema">
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ACDCTerminal">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>ACDCTerminal</rdfs:label>
+		<rdfs:comment>An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ACDCTerminal.BusNameMarker">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>BusNameMarker</rdfs:label>
+		<rdfs:comment>The bus name marker used to name the bus (topological node).</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ACDCTerminal"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#BusNameMarker"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#BusNameMarker.Terminal"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ACDCTerminal.connected">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>connected</rdfs:label>
+		<rdfs:comment>The connected status is related to a bus-branch model and the topological node to terminal relation.  True implies the terminal is connected to the related topological node and false implies it is not. &#xD;
+In a bus-branch model, the connected status is used to tell if equipment is disconnected without having to change the connectivity described by the topological node to terminal relation. A valid case is that conducting equipment can be connected in one end and open in the other. In particular for an AC line segment, where the reactive line charging can be significant, this is a relevant case.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ACDCTerminal"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ACDCTerminal.sequenceNumber">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>sequenceNumber</rdfs:label>
+		<rdfs:comment>The orientation of the terminal connections for a multiple terminal conducting equipment.  The sequence numbering starts with 1 and additional terminals should follow in increasing order.   The first terminal is the "starting point" for a two terminal branch.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ACDCTerminal"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ACLineSegment">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>ACLineSegment</rdfs:label>
+		<rdfs:comment>A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.&#xD;
+For symmetrical, transposed three phase lines, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.&#xD;
+The BaseVoltage at the two ends of ACLineSegments in a Line shall have the same BaseVoltage.nominalVoltage. However, boundary lines may have slightly different BaseVoltage.nominalVoltages and variation is allowed. Larger voltage difference in general requires use of an equivalent branch.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Conductor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ACLineSegment.Clamp">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Clamp</rdfs:label>
+		<rdfs:comment>The clamps connected to the line segment.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ACLineSegment"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Clamp"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ACLineSegment.Cut">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Cut</rdfs:label>
+		<rdfs:comment>Cuts applied to the line segment.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ACLineSegment"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Cut"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Cut.ACLineSegment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#AsynchronousMachine">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>AsynchronousMachine</rdfs:label>
+		<rdfs:comment>A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g. squirrel-cage induction machine.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#RotatingMachine"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BaseVoltage">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>BaseVoltage</rdfs:label>
+		<rdfs:comment>Defines a system base voltage which is referenced.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BaseVoltage.ConductingEquipment">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>ConductingEquipment</rdfs:label>
+		<rdfs:comment>All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#BaseVoltage"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment.BaseVoltage"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BaseVoltage.TransformerEnds">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>TransformerEnds</rdfs:label>
+		<rdfs:comment>Transformer ends at the base voltage.  This is essential for PU calculation.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#BaseVoltage"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#TransformerEnd"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BaseVoltage.VoltageLevel">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>VoltageLevel</rdfs:label>
+		<rdfs:comment>The voltage levels having this base voltage.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#BaseVoltage"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel.BaseVoltage"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BaseVoltage.nominalVoltage">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>nominalVoltage</rdfs:label>
+		<rdfs:comment>The power system resource's base voltage.  Shall be a positive value and not zero.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#BaseVoltage"/>
+		<cims:dataType rdf:resource="http://iec.ch/TC57/CIM100#Voltage"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Bay">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Bay</rdfs:label>
+		<rdfs:comment>A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.  A bay typically represents a physical grouping related to modularization of equipment.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EquipmentContainer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Bay.Substation">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Substation</rdfs:label>
+		<rdfs:comment>Substation containing the bay.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Bay"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Substation"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Substation.Bays"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Bay.VoltageLevel">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>VoltageLevel</rdfs:label>
+		<rdfs:comment>The voltage level containing this bay.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Bay"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel.Bays"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Breaker">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Breaker</rdfs:label>
+		<rdfs:comment>A mechanical switching device capable of making, carrying, and breaking currents under normal circuit conditions and also making, carrying for a specified time, and breaking currents under specified abnormal circuit conditions e.g.  those of short circuit.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ProtectedSwitch"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BusNameMarker">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>BusNameMarker</rdfs:label>
+		<rdfs:comment>Used to apply user standard names to TopologicalNodes. Associated with one or more terminals that are normally connected with the bus name.    The associated terminals are normally connected by non-retained switches. For a ring bus station configuration, all BusbarSection terminals in the ring are typically associated.   For a breaker and a half scheme, both BusbarSections would normally be associated.  For a ring bus, all BusbarSections would normally be associated.  For a "straight" busbar configuration, normally only the main terminal at the BusbarSection would be associated.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Topology"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BusNameMarker.Terminal">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Terminal</rdfs:label>
+		<rdfs:comment>The terminals associated with this bus name marker.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#BusNameMarker"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#ACDCTerminal"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#ACDCTerminal.BusNameMarker"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BusNameMarker.priority">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>priority</rdfs:label>
+		<rdfs:comment>Priority of bus name marker for use as topology bus name.  Use 0 for do not care.  Use 1 for highest priority.  Use 2 as priority is less than 1 and so on.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#BusNameMarker"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#BusbarSection">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>BusbarSection</rdfs:label>
+		<rdfs:comment>A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation. &#xD;
+Voltage measurements are typically obtained from voltage transformers that are connected to busbar sections. A bus bar section may have many physical terminals but for analysis is modelled with exactly one logical terminal.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Connector"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Clamp">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Clamp</rdfs:label>
+		<rdfs:comment>A Clamp is a galvanic connection at a line segment where other equipment is connected. A Clamp does not cut the line segment. &#xD;
+A Clamp is ConductingEquipment and has one Terminal with an associated ConnectivityNode. Any other ConductingEquipment can be connected to the Clamp ConnectivityNode.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConductingEquipment">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>ConductingEquipment</rdfs:label>
+		<rdfs:comment>The parts of the AC power system that are designed to carry current or that are conductively connected through terminals.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Equipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConductingEquipment.BaseVoltage">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>BaseVoltage</rdfs:label>
+		<rdfs:comment>Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#BaseVoltage"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#BaseVoltage.ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConductingEquipment.Terminals">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Terminals</rdfs:label>
+		<rdfs:comment>Conducting equipment have terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Terminal"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Terminal.ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Conductor">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Conductor</rdfs:label>
+		<rdfs:comment>Combination of conducting material with consistent electrical characteristics, building a single electrical system, used to carry current between points in the power system.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Conductor.length">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>length</rdfs:label>
+		<rdfs:comment>Segment length for calculating line section capabilities.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Conductor"/>
+		<cims:dataType rdf:resource="http://iec.ch/TC57/CIM100#Length"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConformLoad">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>ConformLoad</rdfs:label>
+		<rdfs:comment>ConformLoad represent loads that follow a daily load change pattern where the pattern can be used to scale the load with a system load.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_LoadModel"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EnergyConsumer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConnectivityNode">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>ConnectivityNode</rdfs:label>
+		<rdfs:comment>Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConnectivityNode.ConnectivityNodeContainer">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>ConnectivityNodeContainer</rdfs:label>
+		<rdfs:comment>Container of this connectivity node.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNode"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNodeContainer"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNodeContainer.ConnectivityNodes"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConnectivityNode.Terminals">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Terminals</rdfs:label>
+		<rdfs:comment>Terminals interconnected with zero impedance at a this connectivity node.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNode"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Terminal"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Terminal.ConnectivityNode"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConnectivityNodeContainer">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>ConnectivityNodeContainer</rdfs:label>
+		<rdfs:comment>A base class for all objects that may contain connectivity nodes or topological nodes.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#PowerSystemResource"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConnectivityNodeContainer.ConnectivityNodes">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>ConnectivityNodes</rdfs:label>
+		<rdfs:comment>Connectivity nodes which belong to this connectivity node container.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNodeContainer"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNode"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Connector">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Connector</rdfs:label>
+		<rdfs:comment>A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation and are modelled with a single logical terminal.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Cut">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Cut</rdfs:label>
+		<rdfs:comment>A cut separates a line segment into two parts. The cut appears as a switch inserted between these two parts and connects them together. As the cut is normally open there is no galvanic connection between the two line segment parts. But it is possible to close the cut to get galvanic connection.&#xD;
+The cut terminals are oriented towards the line segment terminals with the same sequence number. Hence the cut terminal with sequence number equal to 1 is oriented to the line segment's terminal with sequence number equal to 1.&#xD;
+The cut terminals also act as connection points for jumpers and other equipment, e.g. a mobile generator. To enable this, connectivity nodes are placed at the cut terminals. Once the connectivity nodes are in place any conducting equipment can be connected at them.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Switch"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Cut.ACLineSegment">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>ACLineSegment</rdfs:label>
+		<rdfs:comment>The line segment to which the cut is applied.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Cut"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#ACLineSegment"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#ACLineSegment.Cut"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#DisconnectingCircuitBreaker">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>DisconnectingCircuitBreaker</rdfs:label>
+		<rdfs:comment>A circuit breaking device including disconnecting function, eliminating the need for separate disconnectors.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Breaker"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Disconnector">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Disconnector</rdfs:label>
+		<rdfs:comment>A manually operated or motor operated mechanical switching device used for changing the connections in a circuit, or for isolating a circuit or equipment from a source of power. It is required to open or close circuits when negligible current is broken or made.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Switch"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#EarthFaultCompensator">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>EarthFaultCompensator</rdfs:label>
+		<rdfs:comment>A conducting equipment used to represent a connection to ground which is typically used to compensate earth faults.   An earth fault compensator device modelled with a single terminal implies a second terminal solidly connected to ground.  If two terminals are modelled, the ground is not assumed and normal connection rules apply.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#EnergyConnection">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>EnergyConnection</rdfs:label>
+		<rdfs:comment>A connection of energy generation or consumption on the power system model.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#EnergyConsumer">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>EnergyConsumer</rdfs:label>
+		<rdfs:comment>Generic user of energy - a  point of consumption on the power system model.&#xD;
+EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EnergyConnection"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Equipment</rdfs:label>
+		<rdfs:comment>The parts of a power system that are physical devices, electronic or mechanical.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#PowerSystemResource"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>EquipmentContainer</rdfs:label>
+		<rdfs:comment>Container of this equipment.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Equipment"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#EquipmentContainer"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#EquipmentContainer.Equipments"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.inService">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>inService</rdfs:label>
+		<rdfs:comment>Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Equipment"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.networkAnalysisEnabled">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>networkAnalysisEnabled</rdfs:label>
+		<rdfs:comment>The equipment is enabled to participate in network analysis.  If unspecified, the value is assumed to be true.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Equipment"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Equipment.normallyInService">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>normallyInService</rdfs:label>
+		<rdfs:comment>Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Equipment"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#EquipmentContainer">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>EquipmentContainer</rdfs:label>
+		<rdfs:comment>A modelling construct to provide a root class for containing equipment.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNodeContainer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#EquipmentContainer.Equipments">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Equipments</rdfs:label>
+		<rdfs:comment>Contained equipment.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#EquipmentContainer"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Equipment"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Equipment.EquipmentContainer"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#aggregateOf"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#EquivalentEquipment">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>EquivalentEquipment</rdfs:label>
+		<rdfs:comment>The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Equivalents"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#EquivalentInjection">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>EquivalentInjection</rdfs:label>
+		<rdfs:comment>This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Equivalents"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EquivalentEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#IdentifiedObject">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>IdentifiedObject</rdfs:label>
+		<rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#IdentifiedObject.Names">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Names</rdfs:label>
+		<rdfs:comment>All names of this identified object.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Name"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Name.IdentifiedObject"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#IdentifiedObject.aliasName">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>aliasName</rdfs:label>
+		<rdfs:comment>The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.&#xD;
+The attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#IdentifiedObject.description">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>description</rdfs:label>
+		<rdfs:comment>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#IdentifiedObject.mRID">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>mRID</rdfs:label>
+		<rdfs:comment>Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.&#xD;
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#IdentifiedObject.name">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>name</rdfs:label>
+		<rdfs:comment>The name is any free human readable and possibly non unique text naming the object.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Jumper">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Jumper</rdfs:label>
+		<rdfs:comment>A short section of conductor with negligible impedance which can be manually removed and replaced if the circuit is de-energized. Note that zero-impedance branches can potentially be modelled by other equipment types.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Switch"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Junction">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Junction</rdfs:label>
+		<rdfs:comment>A point where one or more conducting equipments are connected with zero resistance.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Connector"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Length">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Length</rdfs:label>
+		<rdfs:comment>Unit of length. It shall be a positive value or zero.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Domain"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimdatatype"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Length.multiplier">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>multiplier</rdfs:label>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Length"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Length.unit">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>unit</rdfs:label>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Length"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Length.value">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>value</rdfs:label>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Length"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Line">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Line</rdfs:label>
+		<rdfs:comment>Contains equipment beyond a substation belonging to a power transmission line.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EquipmentContainer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#LinearShuntCompensator">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>LinearShuntCompensator</rdfs:label>
+		<rdfs:comment>A linear shunt compensator has banks or sections with equal admittance values.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensator"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Name">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Name</rdfs:label>
+		<rdfs:comment>The Name class provides the means to define any number of human readable  names for an object. A name is &lt;b&gt;not&lt;/b&gt; to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Name.IdentifiedObject">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>IdentifiedObject</rdfs:label>
+		<rdfs:comment>Identified object that this name designates.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Name"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject.Names"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Name.NameType">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>NameType</rdfs:label>
+		<rdfs:comment>Type of this name.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Name"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#NameType"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#NameType.Names"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Name.name">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>name</rdfs:label>
+		<rdfs:comment>Any free text that name the object.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Name"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameType">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>NameType</rdfs:label>
+		<rdfs:comment>Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName as defined in CIM version 14. The definition from CIM14 is:&#xD;
+The localName is a human readable name of the object. It is a free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameType.NameTypeAuthority">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>NameTypeAuthority</rdfs:label>
+		<rdfs:comment>Authority responsible for managing names of this type.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#NameType"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#NameTypeAuthority"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#NameTypeAuthority.NameTypes"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameType.Names">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Names</rdfs:label>
+		<rdfs:comment>All names of this type.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#NameType"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Name"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Name.NameType"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameType.description">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>description</rdfs:label>
+		<rdfs:comment>Description of the name type.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#NameType"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameType.name">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>name</rdfs:label>
+		<rdfs:comment>Name of the name type.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#NameType"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameTypeAuthority">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>NameTypeAuthority</rdfs:label>
+		<rdfs:comment>Authority responsible for creation and management of names of a given type; typically an organization or an enterprise system.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameTypeAuthority.NameTypes">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>NameTypes</rdfs:label>
+		<rdfs:comment>All name types managed by this authority.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#NameTypeAuthority"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#NameType"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#NameType.NameTypeAuthority"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameTypeAuthority.description">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>description</rdfs:label>
+		<rdfs:comment>Description of the name type authority.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#NameTypeAuthority"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NameTypeAuthority.name">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>name</rdfs:label>
+		<rdfs:comment>Name of the name type authority.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#NameTypeAuthority"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NonConformLoad">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>NonConformLoad</rdfs:label>
+		<rdfs:comment>NonConformLoad represents loads that do not follow a daily load change pattern and whose changes are not correlated with the daily load change pattern.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_LoadModel"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EnergyConsumer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#NonlinearShuntCompensator">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>NonlinearShuntCompensator</rdfs:label>
+		<rdfs:comment>A non linear shunt compensator has bank or section admittance values that differ. The attributes g, b, g0 and b0 of the associated NonlinearShuntCompensatorPoint describe the total conductance and admittance of a NonlinearShuntCompensatorPoint at a section number specified by NonlinearShuntCompensatorPoint.sectionNumber.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ShuntCompensator"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>PhaseCode</rdfs:label>
+		<rdfs:comment>An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.&#xD;
+Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.&#xD;
+The integer values are from IEC 61968-9 to support revenue metering applications.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.A">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>A</rdfs:label>
+		<rdfs:comment>Phase A.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.AB">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>AB</rdfs:label>
+		<rdfs:comment>Phases A and B.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.ABC">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>ABC</rdfs:label>
+		<rdfs:comment>Phases A, B, and C.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.ABCN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>ABCN</rdfs:label>
+		<rdfs:comment>Phases A, B, C, and N.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.ABN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>ABN</rdfs:label>
+		<rdfs:comment>Phases A, B, and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.AC">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>AC</rdfs:label>
+		<rdfs:comment>Phases A and C.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.ACN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>ACN</rdfs:label>
+		<rdfs:comment>Phases A, C and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.AN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>AN</rdfs:label>
+		<rdfs:comment>Phases A and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.B">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>B</rdfs:label>
+		<rdfs:comment>Phase B.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.BC">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>BC</rdfs:label>
+		<rdfs:comment>Phases B and C.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.BCN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>BCN</rdfs:label>
+		<rdfs:comment>Phases B, C, and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.BN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>BN</rdfs:label>
+		<rdfs:comment>Phases B and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.C">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>C</rdfs:label>
+		<rdfs:comment>Phase C.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.CN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>CN</rdfs:label>
+		<rdfs:comment>Phases C and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.N">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>N</rdfs:label>
+		<rdfs:comment>Neutral phase.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.X">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>X</rdfs:label>
+		<rdfs:comment>Unknown non-neutral phase.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.XN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>XN</rdfs:label>
+		<rdfs:comment>Unknown non-neutral phase plus neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.XY">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>XY</rdfs:label>
+		<rdfs:comment>Two unknown non-neutral phases.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.XYN">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>XYN</rdfs:label>
+		<rdfs:comment>Two unknown non-neutral phases plus neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.none">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>none</rdfs:label>
+		<rdfs:comment>No phases specified.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.s1">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>s1</rdfs:label>
+		<rdfs:comment>Secondary phase 1.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.s12">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>s12</rdfs:label>
+		<rdfs:comment>Secondary phase 1 and 2.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.s12N">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>s12N</rdfs:label>
+		<rdfs:comment>Secondary phases 1, 2, and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.s1N">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>s1N</rdfs:label>
+		<rdfs:comment>Secondary phase 1 and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.s2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>s2</rdfs:label>
+		<rdfs:comment>Secondary phase 2.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PhaseCode.s2N">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<rdfs:label>s2N</rdfs:label>
+		<rdfs:comment>Secondary phase 2 and neutral.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PowerSystemResource">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>PowerSystemResource</rdfs:label>
+		<rdfs:comment>A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PowerTransformer">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>PowerTransformer</rdfs:label>
+		<rdfs:comment>An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).&#xD;
+A power transformer may be composed of separate transformer tanks that need not be identical.&#xD;
+A power transformer can be modelled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.&#xD;
+The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PowerTransformer.PowerTransformerEnd">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>PowerTransformerEnd</rdfs:label>
+		<rdfs:comment>The ends of this power transformer.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#PowerTransformer"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#PowerTransformerEnd"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#PowerTransformerEnd.PowerTransformer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PowerTransformerEnd">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>PowerTransformerEnd</rdfs:label>
+		<rdfs:comment>A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.&#xD;
+The impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows.&#xD;
+1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.&#xD;
+2) for a three Terminal PowerTransformer the three PowerTransformerEnds represent a star equivalent with each leg in the star represented by r, r0, x, and x0 values.&#xD;
+3) For a three Terminal transformer each PowerTransformerEnd shall have g, g0, b and b0 values corresponding to the no load losses distributed on the three PowerTransformerEnds. The total no load loss shunt impedances may also be placed at one of the PowerTransformerEnds, preferably the end numbered 1, having the shunt values on end 1.  This is the preferred way.&#xD;
+4) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.&#xD;
+Each PowerTransformerEnd must be contained by a PowerTransformer. Because a PowerTransformerEnd (or any other object) can not be contained by more than one parent, a PowerTransformerEnd can not have an association to an EquipmentContainer (Substation, VoltageLevel, etc).</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#TransformerEnd"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#PowerTransformerEnd.PowerTransformer">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>PowerTransformer</rdfs:label>
+		<rdfs:comment>The power transformer of this power transformer end.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#PowerTransformerEnd"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#PowerTransformer"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#PowerTransformer.PowerTransformerEnd"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ProtectedSwitch">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>ProtectedSwitch</rdfs:label>
+		<rdfs:comment>A ProtectedSwitch is a switching device that can be operated by ProtectionEquipment.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#Switch"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Recloser">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Recloser</rdfs:label>
+		<rdfs:comment>Pole-mounted fault interrupter with built-in phase and ground relays, current transformer (CT), and supplemental controls.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ProtectedSwitch"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#RegulatingCondEq">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>RegulatingCondEq</rdfs:label>
+		<rdfs:comment>A type of conducting equipment that can regulate a quantity (i.e. voltage or flow) at a specific point in the network.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EnergyConnection"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#RotatingMachine">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>RotatingMachine</rdfs:label>
+		<rdfs:comment>A rotating machine which may be used as a generator or motor.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#RegulatingCondEq"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#SeriesCompensator">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>SeriesCompensator</rdfs:label>
+		<rdfs:comment>A Series Compensator is a series capacitor or reactor or an AC transmission line without charging susceptance.  It is a two terminal device.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ShuntCompensator">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>ShuntCompensator</rdfs:label>
+		<rdfs:comment>A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor. A negative value for bPerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#RegulatingCondEq"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#StaticVarCompensator">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>StaticVarCompensator</rdfs:label>
+		<rdfs:comment>A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.&#xD;
+&#xD;
+The SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#RegulatingCondEq"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#StationSupply">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>StationSupply</rdfs:label>
+		<rdfs:comment>Station supply with load derived from the station output.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_LoadModel"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EnergyConsumer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Substation">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Substation</rdfs:label>
+		<rdfs:comment>A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EquipmentContainer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Substation.Bays">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Bays</rdfs:label>
+		<rdfs:comment>Bays contained in the substation.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Substation"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Bay"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Bay.Substation"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#aggregateOf"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Substation.VoltageLevels">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>VoltageLevels</rdfs:label>
+		<rdfs:comment>The voltage levels within this substation.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Substation"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel.Substation"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#aggregateOf"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Switch">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Switch</rdfs:label>
+		<rdfs:comment>A generic device designed to close, or open, or both, one or more electric circuits.  All switches are two terminal devices including grounding switches. The ACDCTerminal.connected at the two sides of the switch shall not be considered for assessing switch connectivity, i.e. only Switch.open, .normalOpen and .locked are relevant.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Switch.locked">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>locked</rdfs:label>
+		<rdfs:comment>If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:&#xD;
+&lt;ul&gt;&#xD;
+	&lt;li&gt;locked=true and Switch.open=true. The resulting state is open and locked;&lt;/li&gt;&#xD;
+	&lt;li&gt;locked=false and Switch.open=true. The resulting state is open;&lt;/li&gt;&#xD;
+	&lt;li&gt;locked=false and Switch.open=false. The resulting state is closed.&lt;/li&gt;&#xD;
+&lt;/ul&gt;</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Switch"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Switch.normalOpen">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>normalOpen</rdfs:label>
+		<rdfs:comment>The attribute is used in cases when no Measurement for the status value is present. If the Switch has a status measurement the Discrete.normalValue is expected to match with the Switch.normalOpen.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Switch"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Switch.open">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>open</rdfs:label>
+		<rdfs:comment>The attribute tells if the switch is considered open when used as input to topology processing.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Switch"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Switch.retained">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>retained</rdfs:label>
+		<rdfs:comment>Branch is retained in the topological solution.  The flow through retained switches will normally be calculated in power flow.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Switch"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#SynchronousMachine">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>SynchronousMachine</rdfs:label>
+		<rdfs:comment>An electromechanical device that operates with shaft rotating synchronously with the network. It is a single machine operating either as a generator or synchronous condenser or pump.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#RotatingMachine"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Terminal">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Terminal</rdfs:label>
+		<rdfs:comment>An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#ACDCTerminal"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Terminal.ConductingEquipment">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>ConductingEquipment</rdfs:label>
+		<rdfs:comment>The conducting equipment of the terminal.  Conducting equipment have  terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Terminal"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#ConductingEquipment.Terminals"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Terminal.ConnectivityNode">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>ConnectivityNode</rdfs:label>
+		<rdfs:comment>The connectivity node to which this terminal connects with zero impedance.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Terminal"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNode"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNode.Terminals"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Terminal.TransformerEnd">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>TransformerEnd</rdfs:label>
+		<rdfs:comment>All transformer ends connected at this terminal.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Terminal"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#TransformerEnd"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#TransformerEnd.Terminal"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Terminal.phases">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>phases</rdfs:label>
+		<rdfs:comment>Represents the normal network phasing condition. If the attribute is missing, three phases (ABC) shall be assumed, except for terminals of grounding classes (specializations of EarthFaultCompensator, GroundDisconnector, and Ground) which will be assumed to be N. Therefore, phase code ABCN is explicitly declared when needed, e.g. for star point grounding equipment.&#xD;
+The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Terminal"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#PhaseCode"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#TransformerEnd">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>TransformerEnd</rdfs:label>
+		<rdfs:comment>A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Wires"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimabstract"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#IdentifiedObject"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#TransformerEnd.Terminal">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Terminal</rdfs:label>
+		<rdfs:comment>Terminal of the power transformer to which this transformer end belongs.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#TransformerEnd"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Terminal"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Terminal.TransformerEnd"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>UnitMultiplier</rdfs:label>
+		<rdfs:comment>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. &#xD;
+&#xD;
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Ю" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kЮ".&#xD;
+&#xD;
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Ю", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mЮ", and not the forbidden unit "mkg".</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Domain"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.E">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>E</rdfs:label>
+		<rdfs:comment>Exa 10**18.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.G">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>G</rdfs:label>
+		<rdfs:comment>Giga 10**9.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.M">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>M</rdfs:label>
+		<rdfs:comment>Mega 10**6.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.P">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>P</rdfs:label>
+		<rdfs:comment>Peta 10**15.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.T">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>T</rdfs:label>
+		<rdfs:comment>Tera 10**12.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.Y">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>Y</rdfs:label>
+		<rdfs:comment>Yotta 10**24.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.Z">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>Z</rdfs:label>
+		<rdfs:comment>Zetta 10**21.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.a">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>a</rdfs:label>
+		<rdfs:comment>Atto 10**-18.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.c">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>c</rdfs:label>
+		<rdfs:comment>Centi 10**-2.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.d">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>d</rdfs:label>
+		<rdfs:comment>Deci 10**-1.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.da">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>da</rdfs:label>
+		<rdfs:comment>Deca 10**1.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.f">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>f</rdfs:label>
+		<rdfs:comment>Femto 10**-15.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.h">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>h</rdfs:label>
+		<rdfs:comment>Hecto 10**2.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.k">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>k</rdfs:label>
+		<rdfs:comment>Kilo 10**3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.m">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>m</rdfs:label>
+		<rdfs:comment>Milli 10**-3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.micro">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>micro</rdfs:label>
+		<rdfs:comment>Micro 10**-6.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.n">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>n</rdfs:label>
+		<rdfs:comment>Nano 10**-9.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.none">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>none</rdfs:label>
+		<rdfs:comment>No multiplier or equivalently multiply by 1.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.p">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>p</rdfs:label>
+		<rdfs:comment>Pico 10**-12.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.y">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>y</rdfs:label>
+		<rdfs:comment>Yocto 10**-24.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitMultiplier.z">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<rdfs:label>z</rdfs:label>
+		<rdfs:comment>Zepto 10**-21.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>UnitSymbol</rdfs:label>
+		<rdfs:comment>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. &#xD;
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.&#xD;
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.&#xD;
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. &#xD;
+The integer values are used for harmonization with IEC 61850.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Domain"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.A">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>A</rdfs:label>
+		<rdfs:comment>Current in amperes.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.A2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>A2</rdfs:label>
+		<rdfs:comment>Amperes squared (AІ).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.A2h">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>A2h</rdfs:label>
+		<rdfs:comment>Ampere-squared hour, ampere-squared hour.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.A2s">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>A2s</rdfs:label>
+		<rdfs:comment>Ampere squared time in square amperes (AІs).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.APerA">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>APerA</rdfs:label>
+		<rdfs:comment>Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.APerm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>APerm</rdfs:label>
+		<rdfs:comment>A/m, magnetic field strength, amperes per metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Ah">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Ah</rdfs:label>
+		<rdfs:comment>Ampere-hours, ampere-hours.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.As">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>As</rdfs:label>
+		<rdfs:comment>Ampere seconds (A·s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Bq">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Bq</rdfs:label>
+		<rdfs:comment>Radioactivity in becquerels (1/s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Btu">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Btu</rdfs:label>
+		<rdfs:comment>Energy, British Thermal Units.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.C">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>C</rdfs:label>
+		<rdfs:comment>Electric charge in coulombs (A·s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.CPerkg">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>CPerkg</rdfs:label>
+		<rdfs:comment>Exposure (x rays), coulombs per kilogram.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.CPerm2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>CPerm2</rdfs:label>
+		<rdfs:comment>Surface charge density, coulombs per square metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.CPerm3">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>CPerm3</rdfs:label>
+		<rdfs:comment>Electric charge density, coulombs per cubic metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.F">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>F</rdfs:label>
+		<rdfs:comment>Electric capacitance in farads (C/V).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.FPerm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>FPerm</rdfs:label>
+		<rdfs:comment>Permittivity, farads per metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.G">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>G</rdfs:label>
+		<rdfs:comment>Magnetic flux density, gausses (1 G = 10-4 T).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Gy">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Gy</rdfs:label>
+		<rdfs:comment>Absorbed dose in grays (J/kg).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.GyPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>GyPers</rdfs:label>
+		<rdfs:comment>Absorbed dose rate, grays per second.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.H">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>H</rdfs:label>
+		<rdfs:comment>Electric inductance in henrys (Wb/A).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.HPerm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>HPerm</rdfs:label>
+		<rdfs:comment>Permeability, henrys per metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Hz">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Hz</rdfs:label>
+		<rdfs:comment>Frequency in hertz (1/s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.HzPerHz">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>HzPerHz</rdfs:label>
+		<rdfs:comment>Frequency, rate of frequency change.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mHz/Hz’.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.HzPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>HzPers</rdfs:label>
+		<rdfs:comment>Rate of change of frequency in hertz per second.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.J">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>J</rdfs:label>
+		<rdfs:comment>Energy in joules (N·m = C·V = W·s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.JPerK">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>JPerK</rdfs:label>
+		<rdfs:comment>Heat capacity in joules/kelvin.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.JPerkg">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>JPerkg</rdfs:label>
+		<rdfs:comment>Specific energy, Joules / kg.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.JPerkgK">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>JPerkgK</rdfs:label>
+		<rdfs:comment>Specific heat capacity, specific entropy, joules per kilogram Kelvin.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.JPerm2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>JPerm2</rdfs:label>
+		<rdfs:comment>Insulation energy density, joules per square metre or watt second per square metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.JPerm3">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>JPerm3</rdfs:label>
+		<rdfs:comment>Energy density, joules per cubic metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.JPermol">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>JPermol</rdfs:label>
+		<rdfs:comment>Molar energy, joules per mole.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.JPermolK">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>JPermolK</rdfs:label>
+		<rdfs:comment>Molar entropy, molar heat capacity, joules per mole kelvin.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.JPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>JPers</rdfs:label>
+		<rdfs:comment>Energy rate in joules per second (J/s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.K">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>K</rdfs:label>
+		<rdfs:comment>Temperature in kelvins.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.KPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>KPers</rdfs:label>
+		<rdfs:comment>Temperature change rate in kelvins per second.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.M">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>M</rdfs:label>
+		<rdfs:comment>Length, nautical miles (1 M = 1852 m).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Mx">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Mx</rdfs:label>
+		<rdfs:comment>Magnetic flux, maxwells (1 Mx = 10-8 Wb).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.N">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>N</rdfs:label>
+		<rdfs:comment>Force in newtons (kg·m/sІ).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.NPerm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>NPerm</rdfs:label>
+		<rdfs:comment>Surface tension, newton per metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Nm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Nm</rdfs:label>
+		<rdfs:comment>Moment of force, newton metres.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Oe">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Oe</rdfs:label>
+		<rdfs:comment>Magnetic field in oersteds, (1 Oe = (103/4p) A/m).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Pa">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Pa</rdfs:label>
+		<rdfs:comment>Pressure in pascals (N/mІ). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.PaPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>PaPers</rdfs:label>
+		<rdfs:comment>Pressure change rate in pascals per second.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Pas">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Pas</rdfs:label>
+		<rdfs:comment>Dynamic viscosity, pascal seconds.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Q">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Q</rdfs:label>
+		<rdfs:comment>Quantity power, Q.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Qh">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Qh</rdfs:label>
+		<rdfs:comment>Quantity energy, Qh.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.S">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>S</rdfs:label>
+		<rdfs:comment>Conductance in siemens.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.SPerm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>SPerm</rdfs:label>
+		<rdfs:comment>Conductance per length (F/m).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Sv">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Sv</rdfs:label>
+		<rdfs:comment>Dose equivalent in sieverts (J/kg).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.T">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>T</rdfs:label>
+		<rdfs:comment>Magnetic flux density in teslas (Wb/m2).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.V">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>V</rdfs:label>
+		<rdfs:comment>Electric potential in volts (W/A).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.V2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>V2</rdfs:label>
+		<rdfs:comment>Volt squared (WІ/AІ).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.V2h">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>V2h</rdfs:label>
+		<rdfs:comment>Volt-squared hour, volt-squared-hours.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VA">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VA</rdfs:label>
+		<rdfs:comment>Apparent power in volt amperes. See also real power and reactive power.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VAh">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VAh</rdfs:label>
+		<rdfs:comment>Apparent energy in volt ampere hours.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VAr">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VAr</rdfs:label>
+		<rdfs:comment>Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).&#xD;
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VArh">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VArh</rdfs:label>
+		<rdfs:comment>Reactive energy in volt ampere reactive hours.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VPerHz">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VPerHz</rdfs:label>
+		<rdfs:comment>Magnetic flux in volt per hertz.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VPerV">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VPerV</rdfs:label>
+		<rdfs:comment>Voltage, ratio of voltages.  Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VPerVA">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VPerVA</rdfs:label>
+		<rdfs:comment>Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VPerVAr">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VPerVAr</rdfs:label>
+		<rdfs:comment>Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.VPerm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>VPerm</rdfs:label>
+		<rdfs:comment>Electric field strength, volts per metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Vh">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Vh</rdfs:label>
+		<rdfs:comment>Volt-hour, Volt hours.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Vs">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Vs</rdfs:label>
+		<rdfs:comment>Volt seconds (Ws/A).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.W">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>W</rdfs:label>
+		<rdfs:comment>Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&amp;#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.WPerA">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>WPerA</rdfs:label>
+		<rdfs:comment>Active power per current flow, watts per Ampere.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.WPerW">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>WPerW</rdfs:label>
+		<rdfs:comment>Signal Strength, ratio of power.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mW/W’.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.WPerm2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>WPerm2</rdfs:label>
+		<rdfs:comment>Heat flux density, irradiance, watts per square metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.WPerm2sr">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>WPerm2sr</rdfs:label>
+		<rdfs:comment>Radiance, watts per square metre steradian.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.WPermK">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>WPermK</rdfs:label>
+		<rdfs:comment>Thermal conductivity in watt/metres kelvin.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.WPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>WPers</rdfs:label>
+		<rdfs:comment>Ramp rate in watts per second.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.WPersr">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>WPersr</rdfs:label>
+		<rdfs:comment>Radiant intensity, watts per steradian.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Wb">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Wb</rdfs:label>
+		<rdfs:comment>Magnetic flux in webers (V·s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.Wh">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>Wh</rdfs:label>
+		<rdfs:comment>Real energy in watt hours.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.anglemin">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>anglemin</rdfs:label>
+		<rdfs:comment>Plane angle, minutes.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.anglesec">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>anglesec</rdfs:label>
+		<rdfs:comment>Plane angle, seconds.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.bar">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>bar</rdfs:label>
+		<rdfs:comment>Pressure in bars, (1 bar = 100 kPa).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.cd">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>cd</rdfs:label>
+		<rdfs:comment>Luminous intensity in candelas.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.charPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>charPers</rdfs:label>
+		<rdfs:comment>Data rate (baud) in characters per second.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.character">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>character</rdfs:label>
+		<rdfs:comment>Number of characters.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.cosPhi">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>cosPhi</rdfs:label>
+		<rdfs:comment>Power factor, dimensionless.&#xD;
+Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.&#xD;
+Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.count">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>count</rdfs:label>
+		<rdfs:comment>Amount of substance, Counter value.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.d">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>d</rdfs:label>
+		<rdfs:comment>Time in days, day = 24 h = 86400 s.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.dB">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>dB</rdfs:label>
+		<rdfs:comment>Sound pressure level in decibels. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.dBm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>dBm</rdfs:label>
+		<rdfs:comment>Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1mW. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.deg">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>deg</rdfs:label>
+		<rdfs:comment>Plane angle in degrees.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.degC">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>degC</rdfs:label>
+		<rdfs:comment>Relative temperature in degrees Celsius.&#xD;
+In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.ft3">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>ft3</rdfs:label>
+		<rdfs:comment>Volume, cubic feet.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.gPerg">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>gPerg</rdfs:label>
+		<rdfs:comment>Concentration, The ratio of the mass of a solute divided by the mass of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µg/g’.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.gal">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>gal</rdfs:label>
+		<rdfs:comment>Volume in gallons, US gallon (1 gal = 231 in3 = 128 fl ounce).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.h">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>h</rdfs:label>
+		<rdfs:comment>Time in hours, hour = 60 min = 3600 s.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.ha">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>ha</rdfs:label>
+		<rdfs:comment>Area, hectares.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.kat">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>kat</rdfs:label>
+		<rdfs:comment>Catalytic activity, katal = mol / s.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.katPerm3">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>katPerm3</rdfs:label>
+		<rdfs:comment>Catalytic activity concentration, katals per cubic metre.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.kg">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>kg</rdfs:label>
+		<rdfs:comment>Mass in kilograms.  Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.kgPerJ">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>kgPerJ</rdfs:label>
+		<rdfs:comment>Weight per energy in kilograms per joule (kg/J). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.kgPerm3">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>kgPerm3</rdfs:label>
+		<rdfs:comment>Density in kilogram/cubic metres (kg/mі). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.kgm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>kgm</rdfs:label>
+		<rdfs:comment>Moment of mass in kilogram metres (kg·m) (first moment of mass). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.kgm2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>kgm2</rdfs:label>
+		<rdfs:comment>Moment of mass in kilogram square metres (kg·mІ) (Second moment of mass, commonly called the moment of inertia). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.kn">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>kn</rdfs:label>
+		<rdfs:comment>Speed, knots (1 kn = 1852/3600) m/s.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.l">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>l</rdfs:label>
+		<rdfs:comment>Volume in litres, litre = dm3 = m3/1000.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.lPerh">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>lPerh</rdfs:label>
+		<rdfs:comment>Volumetric flow rate, litres per hour.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.lPerl">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>lPerl</rdfs:label>
+		<rdfs:comment>Concentration, The ratio of the volume of a solute divided by the volume of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µL/L’.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.lPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>lPers</rdfs:label>
+		<rdfs:comment>Volumetric flow rate in litres per second.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.lm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>lm</rdfs:label>
+		<rdfs:comment>Luminous flux in lumens (cd·sr).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.lx">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>lx</rdfs:label>
+		<rdfs:comment>Illuminance in lux (lm/mІ).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m</rdfs:label>
+		<rdfs:comment>Length in metres.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m2</rdfs:label>
+		<rdfs:comment>Area in square metres (mІ).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m2Pers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m2Pers</rdfs:label>
+		<rdfs:comment>Viscosity in square metres / second (mІ/s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m3">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m3</rdfs:label>
+		<rdfs:comment>Volume in cubic metres (mі).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m3Compensated">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m3Compensated</rdfs:label>
+		<rdfs:comment>Volume, cubic metres, with the value compensated for weather effects.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m3Perh">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m3Perh</rdfs:label>
+		<rdfs:comment>Volumetric flow rate, cubic metres per hour.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m3Perkg">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m3Perkg</rdfs:label>
+		<rdfs:comment>Specific volume, cubic metres per kilogram, v.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m3Pers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m3Pers</rdfs:label>
+		<rdfs:comment>Volumetric flow rate in cubic metres per second (mі/s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.m3Uncompensated">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>m3Uncompensated</rdfs:label>
+		<rdfs:comment>Volume, cubic metres, with the value uncompensated for weather effects.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.mPerm3">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>mPerm3</rdfs:label>
+		<rdfs:comment>Fuel efficiency in metres per cubic metres (m/mі).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.mPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>mPers</rdfs:label>
+		<rdfs:comment>Velocity in metres per second (m/s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.mPers2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>mPers2</rdfs:label>
+		<rdfs:comment>Acceleration in metres per second squared (m/sІ).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.min">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>min</rdfs:label>
+		<rdfs:comment>Time in minutes, minute  = 60 s.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.mmHg">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>mmHg</rdfs:label>
+		<rdfs:comment>Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.mol">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>mol</rdfs:label>
+		<rdfs:comment>Amount of substance in moles.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.molPerkg">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>molPerkg</rdfs:label>
+		<rdfs:comment>Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.molPerm3">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>molPerm3</rdfs:label>
+		<rdfs:comment>Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in mі.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.molPermol">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>molPermol</rdfs:label>
+		<rdfs:comment>Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.none">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>none</rdfs:label>
+		<rdfs:comment>Dimension less quantity, e.g. count, per unit, etc.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.ohm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>ohm</rdfs:label>
+		<rdfs:comment>Electric resistance in ohms (V/A).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.ohmPerm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>ohmPerm</rdfs:label>
+		<rdfs:comment>Electric resistance per length in ohms per metre ((V/A)/m).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.ohmm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>ohmm</rdfs:label>
+		<rdfs:comment>Resistivity, ohm metres, (rho).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.onePerHz">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>onePerHz</rdfs:label>
+		<rdfs:comment>Reciprocal of frequency (1/Hz).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.onePerm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>onePerm</rdfs:label>
+		<rdfs:comment>Wavenumber, reciprocal metres,  (1/m).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.ppm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>ppm</rdfs:label>
+		<rdfs:comment>Concentration in parts per million.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.rad">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>rad</rdfs:label>
+		<rdfs:comment>Plane angle in radians (m/m).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.radPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>radPers</rdfs:label>
+		<rdfs:comment>Angular velocity in radians per second (rad/s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.radPers2">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>radPers2</rdfs:label>
+		<rdfs:comment>Angular acceleration, radians per second squared.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.rev">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>rev</rdfs:label>
+		<rdfs:comment>Amount of rotation, revolutions.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.rotPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>rotPers</rdfs:label>
+		<rdfs:comment>Rotations per second (1/s). See also Hz (1/s).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.s">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>s</rdfs:label>
+		<rdfs:comment>Time in seconds.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.sPers">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>sPers</rdfs:label>
+		<rdfs:comment>Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&amp;#181;’ to show rates such as ‘&amp;#181;s/s’.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.sr">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>sr</rdfs:label>
+		<rdfs:comment>Solid angle in steradians (m2/m2).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.therm">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>therm</rdfs:label>
+		<rdfs:comment>Energy, therms.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#UnitSymbol.tonne">
+		<rdf:type rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<rdfs:label>tonne</rdfs:label>
+		<rdfs:comment>Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg).</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Voltage">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>Voltage</rdfs:label>
+		<rdfs:comment>Electrical voltage, can be both AC and DC.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Domain"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#cimdatatype"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Voltage.multiplier">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>multiplier</rdfs:label>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Voltage"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#UnitMultiplier"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Voltage.unit">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>unit</rdfs:label>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Voltage"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#UnitSymbol"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#Voltage.value">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>value</rdfs:label>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#Voltage"/>
+		<cims:dataType rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#VoltageLevel">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:label>VoltageLevel</rdfs:label>
+		<rdfs:comment>A collection of equipment at one common system voltage forming a switchgear. The equipment typically consists of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Core"/>
+		<rdfs:subClassOf rdf:resource="http://iec.ch/TC57/CIM100#EquipmentContainer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#VoltageLevel.BaseVoltage">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>BaseVoltage</rdfs:label>
+		<rdfs:comment>The base voltage used for all equipment within the voltage level.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#BaseVoltage"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#BaseVoltage.VoltageLevel"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#VoltageLevel.Bays">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Bays</rdfs:label>
+		<rdfs:comment>The bays within this voltage level.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Bay"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Bay.VoltageLevel"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#aggregateOf"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#VoltageLevel.Substation">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>Substation</rdfs:label>
+		<rdfs:comment>The substation of the voltage level.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#Substation"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#Substation.VoltageLevels"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#VoltageLevel.highVoltageLimit">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>highVoltageLimit</rdfs:label>
+		<rdfs:comment>The bus bar's high voltage limit.&#xD;
+The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with lowVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel"/>
+		<cims:dataType rdf:resource="http://iec.ch/TC57/CIM100#Voltage"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#VoltageLevel.lowVoltageLimit">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>lowVoltageLimit</rdfs:label>
+		<rdfs:comment>The bus bar's low voltage limit.&#xD;
+The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with highVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#VoltageLevel"/>
+		<cims:dataType rdf:resource="http://iec.ch/TC57/CIM100#Voltage"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+		<cims:stereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/CIM100#ConnectivityNodeContainer.ConnectivityNodes">
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<rdfs:label>ConnectivityNodes</rdfs:label>
+		<rdfs:comment>Connectivity nodes which belong to this connectivity node container.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNodeContainer"/>
+		<rdfs:range rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNode"/>
+		<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+		<cims:inverseRoleName rdf:resource="http://iec.ch/TC57/CIM100#ConnectivityNode.ConnectivityNodeContainer"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_Base">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>Base</rdfs:label>
+		<rdfs:comment>Content of the base CIM published as IEC 61970-301.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_IEC61970"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_Wires">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>Wires</rdfs:label>
+		<rdfs:comment>An extension to the Core and Topology package that models information on the electrical characteristics of Transmission and Distribution networks. This package is used by network applications such as State Estimation, Load Flow and Optimal Power Flow.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Base"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_Topology">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>Topology</rdfs:label>
+		<rdfs:comment>An extension to the Core Package that, in association with the Terminal class, models Connectivity, that is the physical definition of how equipment is connected together. In addition it models Topology, that is the logical definition of how equipment is connected via closed switches. The Topology definition is independent of the other electrical characteristics.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Base"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_IEC61970">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>IEC61970</rdfs:label>
+		<rdfs:comment>Top package for IEC 61970.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_TC57CIM"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_Core">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>Core</rdfs:label>
+		<rdfs:comment>Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities.  This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Base"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_TC57CIM">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>TC57CIM</rdfs:label>
+		<rdfs:comment>Top package for IEC TC57 CIM.</rdfs:comment>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_LoadModel">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>LoadModel</rdfs:label>
+		<rdfs:comment>This package is responsible for modelling the energy consumers and the system load as curves and associated curve data. Special circumstances that may affect the load, such as seasons and day types, are also included here.&#xD;
+&#xD;
+This information is used by Load Forecasting and Load Management.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Base"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_Domain">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>Domain</rdfs:label>
+		<rdfs:comment>The domain package defines primitive datatypes that are used by classes in other packages. Stereotypes are used to describe the datatypes. The following stereotypes are defined:&#xD;
+&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt; A list of permissible constant values.&#xD;
+&amp;lt;&amp;lt;Primitive&amp;gt;&amp;gt; The most basic data types used to compose all other data types.&#xD;
+&amp;lt;&amp;lt;CIMDatatype&amp;gt;&amp;gt; A datatype that contains a value attribute, an optional unit of measure and a unit multiplier. The unit and multiplier may be specified as a static variable initialized to the allowed value.&#xD;
+&amp;lt;&amp;lt;Compound&amp;gt;&amp;gt; A composite of Primitive, enumeration, CIMDatatype or other Compound classes, as long as the Compound classes do not recurse.&#xD;
+For all datatypes both positive and negative values are allowed unless stated otherwise for a particular datatype.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Base"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="#Package_Equivalents">
+		<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+		<rdfs:label>Equivalents</rdfs:label>
+		<rdfs:comment>The equivalents package models equivalent networks.</rdfs:comment>
+		<cims:belongsToCategory rdf:resource="#Package_Base"/>
+	</rdf:Description>
+</rdf:RDF>
