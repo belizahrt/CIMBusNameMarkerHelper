@@ -5,7 +5,6 @@
   xmlns:uml="http://langdale.com.au/2005/UML#" 
   xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
   xmlns:cim="http://iec.ch/TC57/2014/CIM-schema-cim16#" 
-  xmlns:rf="http://gost.ru/2019/schema-cim01#"
   xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#" 
   xmlns:dm="http://iec.ch/TC57/61970-552/DifferenceModel/1#" 
   xml:base="http://cim.bios/Profiles/v1">
